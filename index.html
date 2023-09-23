@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="node_modules/remixicon/fonts/remixicon.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/font.css">
-    <script src="script.js"></script>
 </head>
 <body>
 <div class="container">
@@ -18,7 +17,7 @@
                 <h1 class="col-auto h3">لیست انجام کارها</h1>
             </header>
             <hr>
-            <form>
+            <form id="item-form">
                 <div class="mb-3">
                     <label for="item-input" class="form-label">فعالیت را وارد کنید</label>
                     <input type="text" class="form-control" id="item-input" placeholder=". . ." />
@@ -37,16 +36,11 @@
                 <li class="list-item">فعالیت 3
                 <i class="ri-close-circle-line"></i>
                 </li>
-                <li class="list-item">فعالیت 4
-                <i class="ri-close-circle-line"></i>
-                </li>
-                <li class="list-item">فعالیت 5
-                <i class="ri-close-circle-line"></i>
-                </li>
             </ul>
             <button id="items-clear" class="btn btn-outline-dark w-100">پاک کردن</button>
         </div>
     </div>
 </div>
+    <script src="script.js"></script>
 </body>
 </html>

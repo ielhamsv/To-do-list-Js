@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo List Project</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.rtl.css">
+    <link rel="stylesheet" href="node_modules/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/font.css">
+    <script src="script.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center my-2">
+        <div class="col-11 col-md-7 bg-light p-3 rounded-2">
+            <header class="row">
+                <i class="ri-file-list-2-line col-auto fs-3 align-self-center"></i>
+                <h1 class="col-auto h3">لیست انجام کارها</h1>
+            </header>
+            <hr>
+            <form>
+                <div class="mb-3">
+                    <label for="item-input" class="form-label">فعالیت را وارد کنید</label>
+                    <input type="text" class="form-control" id="item-input" placeholder=". . ." />
+                    <div id="input-invalid" class="form-text text-danger"></div>
+                 </div>
+                <button type="submit" class="btn btn-primary">+ افزودن</button>
+            </form>
+            <input class="form-control form-control-sm mt-4" id="filter" type="text" placeholder="فیلتر کردن">
+            <ul id="item-list" class="my-4 p-0">
+                <li class="list-item">فعالیت 1
+                <i class="ri-close-circle-line"></i>
+                </li>
+                <li class="list-item">فعالیت 2
+                <i class="ri-close-circle-line"></i>
+                </li>
+                <li class="list-item">فعالیت 3
+                <i class="ri-close-circle-line"></i>
+                </li>
+                <li class="list-item">فعالیت 4
+                <i class="ri-close-circle-line"></i>
+                </li>
+                <li class="list-item">فعالیت 5
+                <i class="ri-close-circle-line"></i>
+                </li>
+            </ul>
+            <button id="items-clear" class="btn btn-outline-dark w-100">پاک کردن</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

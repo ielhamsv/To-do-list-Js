@@ -4,7 +4,8 @@ const input_invalid=document.getElementById('input-invalid')
 const item_list=document.getElementById("item-list")
 const clear_btn=document.getElementById('items-clear')
 const itemFilter=document.getElementById('filter')
-
+const form_btn=item_form.querySelector('button')
+let isEditMode= false
 
 
 function displayItems(){
@@ -33,6 +34,23 @@ function addItem(e){
         input_invalid.innerText=''
     }
 
+    if (isEditMode){
+        const itemToEdit= item_list.querySelector('.edit-mode')
+        removeItemFromStorage(itemToEdit.textContent)
+        itemToEdit.remove()
+        form_btn.innerHTML="+ افزودن"
+        form_btn.classList.replace('btn-primary','btn-dark')
+
+        isEditMode=false
+    }else{
+        if (checkItemExist(newItem)){
+            input_invalid.innerText='این فعالیت از قبل وجود دارد!'
+            return;
+        }else {
+            input_invalid.innerText=''
+        }
+    }
+
     addItemToDom(newItem)
 
     addItemToStorage(newItem)
@@ -42,6 +60,18 @@ function addItem(e){
     checkUI()
 }
 
+
+function checkItemExist(item){
+    let itemsFromStorage
+
+    if (localStorage.getItem('items')!==null){
+        itemsFromStorage=JSON.parse(localStorage.getItem('items'))
+    }else{
+        itemsFromStorage=[]
+    }
+
+    return  itemsFromStorage.includes(item)
+}
 
 function addItemToDom(item){
     const li = document.createElement('li')
@@ -77,12 +107,20 @@ function creatIcon(classes){
 }
 
 
-function onClickItem(e){
-    if (e.target.classList.contains('ri-close-circle-line')){
+function onClickItem(e) {
+    if (e.target.classList.contains('ri-close-circle-line')) {
         e.target.parentElement.remove()
+        removeItemFromStorage(e.target.parentElement.textContent)
+        checkUI()
+    }else {
+        isEditMode=true
+        item_list.querySelectorAll('li').forEach( item => item.classList.remove('edit-mode'))
+        e.target.classList.add('edit-mode')
+        item_input.value=e.target.textContent
+
+        form_btn.innerHTML="ویرایش  <i class=\"ri-pencil-fill\"></i>"
+        form_btn.classList.replace('btn-dark','btn-primary')
     }
-    removeItemFromStorage(e.target.parentElement.textContent)
-    checkUI()
 }
 
 function clearItems(){
